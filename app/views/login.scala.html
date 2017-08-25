@@ -1,0 +1,57 @@
+@(form: Form[Application.Login])
+@main("Login") {
+
+<header id="main">
+    <div class="container">
+       <div class="navbar-header">
+            <span class="navbar-brand">
+            <a class="logo" href="http://www.waternomics.eu" target="_blank"><img src="@routes.Assets.versioned("images/waternomics-logo.png")" alt="Waternomics"></a>
+            </span>
+        </div>
+        <div class="navbar pull-right">
+            <ul class="nav navbar-nav">
+                <li><a href="@routes.Application.index">Home</a></li>
+                <li><a href="@routes.Metaphors.index">Metaphors</a></li>
+                <li><a href="@routes.Footprints.index">Footprints</a></li>
+                <li><a href="@routes.Uses.index">Uses</a></li>
+                <li><a href="@routes.Costs.index">Costs</a></li>
+                <li><a href="@routes.RestAPI.index">Rest API</a></li>
+                @if(session(). get("name")==null){
+                <li class="active"><a href="@routes.Application.login">Login</a></li>
+                }else{
+                 <li class="active"><a href="@routes.Application.logout">Logout</a></li>
+                }
+            </ul>
+        </div>
+                <span class="second-name">Water Flavours</span>
+    </div>
+</header>
+
+        <div class="container" id="main-container">
+        <div class="panel-body">
+@helper.form(routes.Application.authenticate) {
+   <h1>Sign in</h1>
+@if(form.hasGlobalErrors) {
+    <p class="error">
+        @form.globalError.message
+    </p>
+}
+@if(flash.contains("success")) {
+    <p class="success">
+        @flash.get("success")
+    </p>
+}
+   <p>
+       <input type="text" name="name" placeholder="User Name" value="@form("name").value">
+   </p>
+   <p>
+       <input type="password" name="password" placeholder="Password">
+   </p>
+   <p>
+       <button type="submit">Login</button>
+   </p>
+}
+</div>
+			
+	</div> <!-- /container -->
+}

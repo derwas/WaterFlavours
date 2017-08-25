@@ -1,0 +1,77 @@
+@(counter: String)
+
+@main("Domestic Water Use") {
+<header id="main">
+    <div class="container">
+       <div class="navbar-header">
+            <span class="navbar-brand">
+            <a class="logo" href="http://www.waternomics.eu" target="_blank"><img src="@routes.Assets.versioned("images/waternomics-logo.png")" alt="Waternomics"></a>
+            </span>
+        </div>
+        <div class="navbar pull-right">
+            <ul class="nav navbar-nav">
+                <li><a href="@routes.Application.index">Home</a></li>
+                <li ><a href="@routes.Metaphors.index">Metaphors</a></li>
+                <li ><a href="@routes.Footprints.index">Footprints</a></li>
+                <li class="active"><a href="@routes.Uses.index">Uses</a></li>
+                <li><a href="@routes.Costs.index">Costs</a></li>
+                <li><a href="@routes.RestAPI.index">Rest API</a></li>
+                @if(session(). get("name")==null){
+                <li><a href="@routes.Application.login">Login</a></li>
+                }else{
+                 <li><a href="@routes.Application.logout">Logout</a></li>
+                }
+            </ul>
+        </div>
+                <span class="second-name">Water Flavours</span>
+    </div>
+</header>
+
+        <div class="container" id="main-container">
+@if(session(). get("name")!=null){
+			<div class="row">
+			    <div class="col-lg-12">
+			        <div class="panel panel-default" >
+			            <div class="panel-heading">
+			<h1>Create a new domestic water use</h1>
+			</div>
+			<div class="panel-body">
+			<form action="@routes.Uses.addUse()" method="post">
+					<input type="text" name="activity" width="15em" style="width: 15em">	
+					  requires 
+					 <input type="text" name="wqt" width="10em" style="width: 10em">
+					 <select name="wunit" width="3em" style="width: 3em"> 
+			          <option value="L">L</option>
+			          <option value="m3">m3</option>
+			        </select> of water. 
+			        <br>
+					Reference  <input type="url" required pattern="https?://.+" name="reference"> 
+					<br>
+					Image  <input type="url" name="image" required pattern="https?://.+" >
+					<button type="submit" class="btn btn-default" value="Submit">Add Use</button>
+			
+				</form>
+				</div>
+			</div>	
+			</div>
+			</div>
+}			
+			<div class="row">
+			    <div class="col-lg-12">
+			        <div class="panel panel-default" >
+			            <div class="panel-heading">
+			<h1>List of domestic water use</h1>
+			</div>
+			<div class="panel-body">
+				<script type="text/javascript" src="/assets/javascripts/uses.js"></script>
+			
+				<ul id="uses">
+				</ul>
+			</div>
+			</div>
+			</div>
+			</div>
+		</div>
+		<p align="center" >@counter</p>		
+		
+}

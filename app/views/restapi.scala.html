@@ -1,0 +1,89 @@
+@(counter: String)
+
+@main("RestAPI") {
+<header id="main">
+    <div class="container">
+       <div class="navbar-header">
+            <span class="navbar-brand">
+            <a class="logo" href="http://www.waternomics.eu" target="_blank"><img src="@routes.Assets.versioned("images/waternomics-logo.png")" alt="Waternomics"></a>
+            </span>
+        </div>
+        <div class="navbar pull-right">
+            <ul class="nav navbar-nav">
+                <li><a href="@routes.Application.index">Home</a></li>
+                <li><a href="@routes.Metaphors.index">Metaphors</a></li>
+                <li><a href="@routes.Footprints.index">Footprints</a></li>
+                <li><a href="@routes.Uses.index">Uses</a></li>
+                <li><a href="@routes.Costs.index">Costs</a></li>
+                <li class="active"><a href="@routes.RestAPI.index">Rest API</a></li>
+                @if(session(). get("name")==null){
+                <li><a href="@routes.Application.login">Login</a></li>
+                }else{
+                 <li><a href="@routes.Application.logout">Logout</a></li>
+                }
+            </ul>
+        </div>
+                <span class="second-name">Water Flavours</span>
+    </div>
+</header>
+
+        <div class="container" id="main-container">
+
+				<div class="row">
+				    <div class="col-lg-12">
+				        <div class="panel panel-default" >
+				            <div class="panel-heading">
+				                <h2>REST API </h2>
+				            </div>
+				            <div class="panel-body">
+				            </div>
+				            <table class="table table-striped">
+				                <thead>
+				                    <tr>
+				                        <th>URL</th>
+				                        <th>Response</th>
+				                    </tr>
+				                </thead>
+				                <tbody>
+				                    <tr>
+				                        <td><b><a href="@routes.RestAPI.getMetaphors" target="_blank">@routes.RestAPI.getMetaphors</a></b></td>
+				                        <td>Returns the list of metaphors.</td>
+				                    </tr>
+				                    <tr>
+				                       <td><b><a href="@routes.RestAPI.getFootprints" target="_blank">@routes.RestAPI.getFootprints</a></b></td>
+				                        <td>Returns the list of water footprints.</td>
+				                    </tr>
+				                    
+				                    <tr>
+				                        <td><b><a href="@routes.RestAPI.getUses" target="_blank">@routes.RestAPI.getUses</a></b></td>
+				                        <td>Returns the list of domestic water uses.</td>
+				                    </tr>
+				                    <tr>
+				                        <td><b><a href="@routes.RestAPI.getCosts" target="_blank">@routes.RestAPI.getCosts</a></b></td>
+				                        <td>Returns the list of water costs.</td>
+				                    </tr>
+				                    <tr>
+				                        <td><b><a href='@routes.RestAPI.getRandomMetaphors(3,2,"l")' target="_blank">@routes.RestAPI.getRandomMetaphors(3,2,"l")</a></b></td>
+				                        <td>Returns 3 water metaphors for the quantity of 2 litres (l) of water.</td>
+				                    </tr>
+									 <tr>
+				                        <td><b><a href='@routes.RestAPI.getRandomFootprints(3,2,"m3")' target="_blank">@routes.RestAPI.getRandomFootprints(3,2,"m3")</a></b></td>
+				                        <td>Returns 3 water footprints for the quantity of 2 m3 of water.</td>
+				                    </tr>
+				                     <tr>
+				                        <td><b><a href='@routes.RestAPI.getRandomUses(3,20,"l")' target="_blank">@routes.RestAPI.getRandomUses(3,20,"l")</a></b></td>
+				                        <td>Returns 3 domestic water uses for the quantity of 20 l of water.</td>
+				                    </tr>
+				                    <tr>
+				                        <td><b><a href='@routes.RestAPI.getCostByCountry("Ireland",2,"m3")' target="_blank">@routes.RestAPI.getCostByCountry("Ireland",2,"m3")</a></b></td>
+				                        <td>Returns the cost of 2 m3 of water in Ireland.</td>
+				                    </tr>
+				               </tbody>
+				            </table>
+				        </div>
+				    </div>
+				</div>
+	</div>
+	<p align="center" >@counter</p>		
+	
+}

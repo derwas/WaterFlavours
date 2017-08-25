@@ -1,0 +1,63 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                       @controllers.Application.index()
+GET     /login                  @controllers.Application.login()
+POST    /login                  @controllers.Application.authenticate()
+GET     /logout                 @controllers.Application.logout()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               @controllers.Assets.versioned(path="/public", file: Asset)
+
+#Metaphors
+GET     /Metaphors/                 @controllers.Metaphors.index()
+POST    /Metaphors/addMetaphor      @controllers.Metaphors.addMetaphor()
+GET     /Metaphors/deleteMetaphor   @controllers.Metaphors.deleteMetaphor(id: String)
+
+
+#costs
+GET     /Costs             @controllers.Costs.index()
+GET     /Costs/            @controllers.Costs.index()
+POST     /Costs/addCost    @controllers.Costs.addCost()
+GET     /Costs/deleteCost  @controllers.Costs.deleteCost(id: String)
+
+#Footprints
+GET     /Footprints/                    @controllers.Footprints.index()
+POST    /Footprints/addFootprint        @controllers.Footprints.addFootprint()
+GET     /Footprints/deleteFootprint     @controllers.Footprints.deleteFootprint(id: String)
+
+#Uses
+GET     /Uses              @controllers.Uses.index()
+GET     /Uses/              @controllers.Uses.index()
+POST    /Uses/addUse        @controllers.Uses.addUse()
+GET     /Uses/deleteUse     @controllers.Uses.deleteUse(id: String)
+
+
+#rest api
+GET /restapi	@controllers.RestAPI.index()
+GET /restapi/	@controllers.RestAPI.index()
+
+GET /restapi/getmetaphors @controllers.RestAPI.getMetaphors()
+GET /restapi/getmetaphors/ @controllers.RestAPI.getMetaphors()
+
+GET /restapi/getRandomMetaphors/:number/:value/:unit @controllers.RestAPI.getRandomMetaphors(number : Integer ,  value : Double,  unit:String)
+
+GET /restapi/getRandomFootprints/:number/:value/:unit @controllers.RestAPI.getRandomFootprints(number : Integer ,  value : Double,  unit:String)
+
+GET /restapi/getRandomUses/:number/:value/:unit @controllers.RestAPI.getRandomUses(number : Integer ,  value : Double,  unit:String)
+
+
+GET /restapi/getCostByCountry/:country/:value/:unit @controllers.RestAPI.getCostByCountry(country : String ,  value : Double,  unit:String)
+
+
+GET /restapi/getcosts @controllers.RestAPI.getCosts()
+GET /restapi/getcosts/ @controllers.RestAPI.getCosts()
+
+GET /restapi/getfootprints @controllers.RestAPI.getFootprints()
+GET /restapi/getfootprints/ @controllers.RestAPI.getFootprints()
+
+GET /restapi/getuses @controllers.RestAPI.getUses()
+GET /restapi/getuses/ @controllers.RestAPI.getUses()
+
